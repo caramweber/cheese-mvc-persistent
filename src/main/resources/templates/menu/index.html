@@ -7,16 +7,14 @@
         <h1 th:text="${title}">Default Title</h1>
 
         <nav th:replace="fragments :: navigation"></nav>
-
-        <p th:unless="${menus} and ${menus.size()}">no menus :(</p>
-
-        <ul>
-            <li th:each="menu : ${menus}">
-                <a th:href="'menu/view/' + ${menu.id}" th:text="${menu.name}"></a>
-            </li>
+        <br/>
+        <p th:unless="${items} and ${items.size()}">No Menus</p>
+        <ul th:each="item : ${items}">
+            <li> <p><a th:href="'/menu/view/' + ${item.id}"  th:text="${item.name}"></a></p></li>
+            <!--<li th:text="${item.name}"></li>-->
         </ul>
-
-        <a th:href="@{menu/add}">Add Menu</a>
+        <br/>
+        <a href="/menu/add">Create New Menu</a>
 
     </body>
 </html>

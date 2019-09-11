@@ -2,20 +2,15 @@ package org.launchcode.models.forms;
 
 import org.launchcode.models.Cheese;
 import org.launchcode.models.Menu;
+import org.launchcode.models.data.MenuDao;
 
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+
+/**
+ * Created by sl6059 on 4/23/2017.
+ */
 public class AddMenuItemForm {
-
-    private Menu menu;
-    private Iterable<Cheese> cheeses;
-    private int menuId;
-    private int cheeseId;
-
-    public AddMenuItemForm() {}
-
-    public AddMenuItemForm(Menu menu, Iterable<Cheese> cheeses) {
-        this.menu = menu;
-        this.cheeses = cheeses;
-    }
 
     public Menu getMenu() {
         return menu;
@@ -25,6 +20,8 @@ public class AddMenuItemForm {
         this.menu = menu;
     }
 
+    private Menu menu;
+
     public Iterable<Cheese> getCheeses() {
         return cheeses;
     }
@@ -32,6 +29,8 @@ public class AddMenuItemForm {
     public void setCheeses(Iterable<Cheese> cheeses) {
         this.cheeses = cheeses;
     }
+
+    private Iterable<Cheese> cheeses;
 
     public int getMenuId() {
         return menuId;
@@ -41,8 +40,22 @@ public class AddMenuItemForm {
         this.menuId = menuId;
     }
 
+    @NotNull
+    private int menuId;
+
     public int getCheeseId() {
         return cheeseId;
+    }
+
+    @NotNull
+    private int cheeseId;
+
+    public AddMenuItemForm() {
+    }
+
+    public AddMenuItemForm(Iterable<Cheese> cheeses, Menu menu) {
+        this.cheeses = cheeses;
+        this.menu = menu;
     }
 
     public void setCheeseId(int cheeseId) {

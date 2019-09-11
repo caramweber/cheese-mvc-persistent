@@ -16,18 +16,26 @@ public class Cheese {
     private int id;
 
     @NotNull
-    @Size(min=3, max=15)
+    @Size(min=3, max=15, message = "Name has to be between 3 to 15 characters long")
     private String name;
 
     @NotNull
     @Size(min=1, message = "Description must not be empty")
     private String description;
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    //    @Null(message = "Please enter in a Category before adding a cheese")
     @ManyToOne
     private Category category;
 
-    @ManyToMany(mappedBy = "cheeses")
-    private List<Menu> menus;
+//    private CheeseType type;
 
     public Cheese(String name, String description) {
         this.name = name;
@@ -35,6 +43,9 @@ public class Cheese {
     }
 
     public Cheese() { }
+
+    @ManyToMany(mappedBy = "cheeses")
+    private List<Menu> menus;
 
     public int getId() {
         return id;
@@ -54,13 +65,5 @@ public class Cheese {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 }
