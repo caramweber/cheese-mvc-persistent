@@ -7,9 +7,6 @@ import org.launchcode.models.data.MenuDao;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 
-/**
- * Created by sl6059 on 4/23/2017.
- */
 public class AddMenuItemForm {
 
     public Menu getMenu() {
